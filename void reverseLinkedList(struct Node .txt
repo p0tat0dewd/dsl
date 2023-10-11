@@ -1,0 +1,16 @@
+reverseLinkedList
+
+void reverseLinkedList(struct Node** head) {
+    struct Node* prev = NULL;
+    struct Node* current = *head;
+    struct Node* nextNode = NULL;
+    while (current != NULL) {
+        nextNode = current->next;
+        current->next = prev;
+        prev = current;
+        current = nextNode;
+    }
+    *head = prev;
+}
+Reverse a Linked List:
+

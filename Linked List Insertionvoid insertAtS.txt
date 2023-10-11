@@ -1,0 +1,35 @@
+Linked List Insertionvoid insertAtStart(struct Node** head, int value) {
+    struct Node* newNode = createNode(value);
+    newNode->next = *head;
+    *head = newNode;
+}
+
+void insertAtEnd(struct Node** head, int value) {
+    struct Node* newNode = createNode(value);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    struct Node* current = *head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+    current->next = newNode;
+}
+
+void insertAtPosition(struct Node** head, int value, int position) {
+    if (position <= 0) {
+        insertAtStart(head, value);
+        return;
+    }
+    struct Node* newNode = createNode(value);
+    struct Node* current = *head;
+    for (int i = 1; i < position && current != NULL; ++i) {
+        current = current->next;
+    }
+    if (current == NULL) {
+        return; // Handle invalid position
+    }
+    newNode->next = current->next;
+    current->next = newNode;
+}

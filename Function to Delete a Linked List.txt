@@ -1,0 +1,11 @@
+ Function to Delete a Linked List:
+void deleteLinkedList(struct Node** head) {
+    struct Node* current = *head;
+    struct Node* nextNode = NULL;
+    while (current != NULL) {
+        nextNode = current->next;
+        free(current);
+        current = nextNode;
+    }
+    *head = NULL;
+}
